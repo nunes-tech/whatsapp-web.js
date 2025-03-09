@@ -15,11 +15,6 @@ const Chat = require('./Chat');
  * @extends {Chat}
  */
 class GroupChat extends Chat {
-    constructor(client, data) {
-        super(client);
-
-        if (data) this._patch(data);
-    }
     _patch(data) {
         this.groupMetadata = data.groupMetadata;
 
