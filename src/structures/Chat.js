@@ -1,7 +1,6 @@
 'use strict';
 
 const Base = require('./Base');
-const GroupChat = require('./GroupChat');
 const Message = require('./Message');
 
 /**
@@ -290,6 +289,7 @@ class Chat extends Base {
             throw new Error('Este chat não é um grupo.');
         }
 
+        const GroupChat = require('./GroupChat');
         const chat = await this.client.getChatById(this.id._serialized);
         return new GroupChat(this.client, chat);
     }
