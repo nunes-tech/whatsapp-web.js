@@ -1,6 +1,7 @@
 'use strict';
 
 const Base = require('./Base');
+const GroupChat = require('./GroupChat');
 const Message = require('./Message');
 
 /**
@@ -277,6 +278,20 @@ class Chat extends Base {
      */
     async syncHistory() {
         return this.client.syncHistory(this.id._serialized);
+    }
+
+    //NUNES TECH
+     /**
+     * Retorna uma promise que resolve para um objeto do tipo GroupChat, se o chat for um grupo.
+     * @returns {Promise<GroupChat>}
+     */
+     async getGroupInfo() {
+        if (!this.isGroup) {
+            throw new Error('Este chat não é um grupo.');
+        }
+
+        const chat = await this.client.getChatById(this.id._serialized);
+        return new GroupChat(this.client, chat);
     }
 }
 
