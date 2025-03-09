@@ -1,5 +1,5 @@
 module.exports = {
     
-    CustomClient: require('./CustomClient')
+    CustomClient: require('./customClient')
 
 }

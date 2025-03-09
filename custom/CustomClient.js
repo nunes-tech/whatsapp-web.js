@@ -1,7 +1,7 @@
 'use strict';
 
-const { Client } = require("../src/Client");
-const { GroupChat } = require("../src/structures");
+const { Client } = require("whatsapp-web.js");
+const { GroupChat } = require("whatsapp-web.js/src/structures");
 
 module.exports = class CustomClient extends Client {
     constructor(options = {}) {
@@ -11,7 +11,7 @@ module.exports = class CustomClient extends Client {
     async removeMember(idGroup, idMember) {
         try {
             const chat = await super.getChatById(idGroup);
-            const groupChat = new GroupChat(this, chat);
+            const groupChat = new GroupChat(this, chat)
 
             await groupChat.removeParticipants([idMember]);
             return true;
