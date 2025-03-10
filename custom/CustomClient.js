@@ -16,7 +16,7 @@ module.exports = class CustomClient extends Client {
             const chat = await super.getChatById(idGroup);
             const groupChat = new GroupChat(this, chat)
 
-            await groupChat.removeParticipant([idMember]);
+            await groupChat.removeParticipants([idMember]);
             return true;
         } catch(error) {
             return false;
